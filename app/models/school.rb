@@ -2,4 +2,5 @@
 
 class School < ApplicationRecord
   belongs_to :school_admin
+  has_many :courses
 end
