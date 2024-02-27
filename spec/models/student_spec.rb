@@ -3,5 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'associations' do
+    it { should have_many(:student_batches).dependent(:destroy) }
+    it { should have_many(:batches).through(:student_batches) }
+  end
 end

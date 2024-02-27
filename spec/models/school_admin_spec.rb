@@ -3,5 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe SchoolAdmin, type: :model do
-  it { should have_many(:schools) }
+  context 'associations' do
+    it { should have_many(:schools).dependent(:destroy) }
+  end
 end

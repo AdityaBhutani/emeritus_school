@@ -6,6 +6,6 @@ class Batch < ApplicationRecord
   validates :end_date, presence: true
 
   belongs_to :course
-  has_many :student_batches
+  has_many :student_batches, dependent: :destroy
   has_many :students, through: :student_batches, source: :user, source_type: 'Student'
 end

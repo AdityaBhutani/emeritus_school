@@ -4,5 +4,5 @@ class Course < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   belongs_to :school
-  has_many :batches
+  has_many :batches, dependent: :destroy
 end

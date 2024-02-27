@@ -5,5 +5,5 @@ class School < ApplicationRecord
   validates :address, presence: true
 
   belongs_to :school_admin
-  has_many :courses
+  has_many :courses, dependent: :destroy
 end

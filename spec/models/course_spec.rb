@@ -3,5 +3,12 @@
 require 'rails_helper'
 
 RSpec.describe Course, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it { should validate_presence_of(:name) }
+  end
+
+  context 'associations' do
+    it { should belong_to(:school) }
+    it { should have_many(:batches).dependent(:destroy) }
+  end
 end
