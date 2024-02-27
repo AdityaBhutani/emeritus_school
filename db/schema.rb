@@ -12,9 +12,9 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_02_26_154323) do
   create_table "batches", force: :cascade do |t|
-    t.string "name"
-    t.date "start_date"
-    t.date "end_date"
+    t.string "name", null: false
+    t.date "start_date", null: false
+    t.date "end_date", null: false
     t.integer "course_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -22,20 +22,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_154323) do
   end
 
   create_table "courses", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
     t.integer "school_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_courses_on_name", unique: true
     t.index ["school_id"], name: "index_courses_on_school_id"
   end
 
   create_table "schools", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
+    t.string "name", null: false
+    t.string "address", null: false
     t.integer "school_admin_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_schools_on_name", unique: true
     t.index ["school_admin_id"], name: "index_schools_on_school_admin_id"
   end
 
@@ -45,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_26_154323) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_student_batches_on_batch_id"
+    t.index ["student_id", "batch_id"], name: "index_student_batches_on_student_id_and_batch_id", unique: true
     t.index ["student_id"], name: "index_student_batches_on_student_id"
   end
 

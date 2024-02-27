@@ -8,5 +8,7 @@ class CreateStudentBatches < ActiveRecord::Migration[7.1]
 
       t.timestamps
     end
+
+    add_index :student_batches, %i[student_id batch_id], unique: true
   end
 end
