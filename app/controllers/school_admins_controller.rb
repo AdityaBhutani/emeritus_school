@@ -1,9 +1,11 @@
 class SchoolAdminsController < ApplicationController
   before_action :set_school_admin, only: %i[ show edit update destroy ]
+  before_action :authorize_user, only: %i[ show edit update destroy ]
 
   # GET /school_admins or /school_admins.json
   def index
     @school_admins = SchoolAdmin.all
+    authorize @school_admins
   end
 
   # GET /school_admins/1 or /school_admins/1.json
@@ -22,6 +24,7 @@ class SchoolAdminsController < ApplicationController
   # POST /school_admins or /school_admins.json
   def create
     @school_admin = SchoolAdmin.new(school_admin_params)
+    authorize @school_admin
 
     respond_to do |format|
       if @school_admin.save
@@ -61,6 +64,10 @@ class SchoolAdminsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_school_admin
       @school_admin = SchoolAdmin.find(params[:id])
+    end
+
+    def authorize_user
+      authorize @school_admin
     end
 
     # Only allow a list of trusted parameters through.
