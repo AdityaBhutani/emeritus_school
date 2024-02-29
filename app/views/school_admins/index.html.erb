@@ -1,0 +1,11 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>School admins</h1>
+
+<div id="school_admins">
+  <% @school_admins.each do |school_admin| %>
+    <%= render school_admin %>
+  <% end %>
+</div>
+
+<%= link_to "New school admin", new_school_admin_path %>
