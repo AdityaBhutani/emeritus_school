@@ -1,25 +1,29 @@
 class EnrollmentPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
-    # def resolve
-    #   scope.all
-    # end
+    def resolve
+      if user.is_a?(Student)
+        Enrollment.where(student_id: user.id)
+      else
+        scope.all
+      end
+    end
   end
 
   def index?
-    user.is_a?(Admin) || user.is_a?(SchoolAdmin)
+    user.is_a?(Admin) || user.is_a?(SchoolAdmin) || user.is_a?(Student)
   end
 
   def show?
-    user.is_a?(Admin) || user.is_a?(SchoolAdmin)
+    user.is_a?(Admin) || user.is_a?(SchoolAdmin) || (user.is_a?(Student) && record.student.id == user.id)
   end
 
   def create?
-    user.is_a?(Admin) || user.is_a?(SchoolAdmin)
+    user.is_a?(Admin) || user.is_a?(SchoolAdmin) || user.is_a?(Student)
   end
 
   def new?
-    user.is_a?(Admin) || user.is_a?(SchoolAdmin)
+    user.is_a?(Admin) || user.is_a?(SchoolAdmin) || user.is_a?(Student)
   end
 
   def update?

@@ -5,7 +5,7 @@ class EnrollmentsController < ApplicationController
 
   # GET /enrollments or /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @enrollments = policy_scope(Enrollment).all
     authorize @enrollments
   end
 
