@@ -1,10 +1,12 @@
 class SchoolsController < ApplicationController
   before_action :set_school, only: %i[ show edit update destroy ]
   before_action :set_school_admins, only: %i[ new edit]
+  before_action :authorize_user, only: %i[ show edit update destroy ]
 
   # GET /schools or /schools.json
   def index
     @schools = School.all
+    authorize @schools
   end
 
   # GET /schools/1 or /schools/1.json
@@ -23,6 +25,7 @@ class SchoolsController < ApplicationController
   # POST /schools or /schools.json
   def create
     @school = School.new(school_params)
+    authorize @school
 
     respond_to do |format|
       if @school.save
@@ -66,6 +69,10 @@ class SchoolsController < ApplicationController
 
     def set_school_admins
       @school_admins = SchoolAdmin.all
+    end
+
+    def authorize_user
+      authorize @school
     end
 
     # Only allow a list of trusted parameters through.
