@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Classmates</h1>
+
+<div id="classmates">
+  <% @classmates.each do |classmate| %>
+    <%= render partial: 'classmate', locals: { classmate: classmate } %>
+  <% end %>
+</div>
