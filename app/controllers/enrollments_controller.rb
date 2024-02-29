@@ -1,10 +1,12 @@
 class EnrollmentsController < ApplicationController
   before_action :set_enrollment, only: %i[ show edit update destroy ]
   before_action :set_selects, only: %i[ new edit]
+  before_action :authorize_user, only: %i[ show edit update destroy ]
 
   # GET /enrollments or /enrollments.json
   def index
     @enrollments = Enrollment.all
+    authorize @enrollments
   end
 
   # GET /enrollments/1 or /enrollments/1.json
@@ -23,6 +25,7 @@ class EnrollmentsController < ApplicationController
   # POST /enrollments or /enrollments.json
   def create
     @enrollment = Enrollment.new(enrollment_params)
+    authorize @enrollment
 
     respond_to do |format|
       if @enrollment.save
@@ -68,6 +71,10 @@ class EnrollmentsController < ApplicationController
       @statuses = Enrollment.statuses.keys.map { |status| [status.humanize, status] }
       @students = Student.all
       @batches = Batch.all
+    end
+
+    def authorize_user
+      authorize @enrollment
     end
 
     # Only allow a list of trusted parameters through.
