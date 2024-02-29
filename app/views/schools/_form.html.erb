@@ -12,20 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :name %><br>
+    <%= form.label :name %>
     <%= form.text_field :name, id: :school_name %>
   </div>
 
   <div class="field">
-    <%= form.label :address %><br>
+    <%= form.label :address %>
     <%= form.text_area :address, id: :school_address %>
   </div>
 
   <div class="field">
-    <%= form.label :school_admin_id, "School Admin" %><br>
+    <%= form.label :school_admin_id, "School Admin" %>
     <%= form.collection_select :school_admin_id, @school_admins, :id, :name, include_blank: true %>
   </div>
 
+  <br>
   <div>
     <%= form.submit %>
   </div>

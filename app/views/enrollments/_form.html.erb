@@ -11,21 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :status, "Status" %><br>
-    <%= form.select :status, @statuses, {} %>
-  </div>
+  <% if policy(Enrollment).edit? %>
+    <div class="field">
+      <%= form.label :status, "Status" %>
+      <%= form.select :status, @statuses, {} %>
+    </div>
+
+    <div class="field">
+      <%= form.label :student_id, "Student" %>
+      <%= form.collection_select :student_id, @students, :id, :name, include_blank: true %>
+    </div>
+  <% end %>
+
+  <% if !policy(Enrollment).edit? %>
+    <%= form.hidden_field :status, value: "pending" %>
+    <%= form.hidden_field :student_id, value: current_user.id %>
+  <% end %>
 
   <div class="field">
-    <%= form.label :student_id, "Student" %><br>
-    <%= form.collection_select :student_id, @students, :id, :name, include_blank: true %>
-  </div>
-
-  <div class="field">
-    <%= form.label :batch_id, "Batch" %><br>
+    <%= form.label :batch_id, "Batch" %>
     <%= form.collection_select :batch_id, @batches, :id, :name, include_blank: true %>
   </div>
 
+  <br>
   <div>
     <%= form.submit %>
   </div>
