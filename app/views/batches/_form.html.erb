@@ -1,0 +1,37 @@
+<%= form_with(model: batch) do |form| %>
+  <% if batch.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
+
+      <ul>
+        <% batch.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %><br>
+    <%= form.text_field :name, id: :school_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :course_id, "Courses" %><br>
+    <%= form.collection_select :course_id, @courses, :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %><br>
+    <%= form.date_select :start_date, start_year: Time.now.year - 5, end_year: Time.now.year + 5, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %><br>
+    <%= form.date_select :end_date, start_year: Time.now.year - 5, end_year: Time.now.year + 5, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
