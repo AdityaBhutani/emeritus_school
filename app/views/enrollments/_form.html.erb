@@ -1,0 +1,32 @@
+<%= form_with(model: enrollment) do |form| %>
+  <% if enrollment.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(enrollment.errors.count, "error") %> prohibited this enrollment from being saved:</h2>
+
+      <ul>
+        <% enrollment.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :status, "Status" %><br>
+    <%= form.select :status, @statuses, {} %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id, "Student" %><br>
+    <%= form.collection_select :student_id, @students, :id, :name, include_blank: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :batch_id, "Batch" %><br>
+    <%= form.collection_select :batch_id, @batches, :id, :name, include_blank: true %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
