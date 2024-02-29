@@ -1,10 +1,12 @@
 class BatchesController < ApplicationController
   before_action :set_batch, only: %i[ show edit update destroy ]
   before_action :set_courses, only: %i[ new edit]
+  before_action :authorize_user, only: %i[ show edit update destroy ]
 
   # GET /batches or /batches.json
   def index
     @batches = Batch.all
+    authorize @batches
   end
 
   # GET /batches/1 or /batches/1.json
@@ -23,6 +25,7 @@ class BatchesController < ApplicationController
   # POST /batches or /batches.json
   def create
     @batch = Batch.new(batch_params)
+    authorize @batch
 
     respond_to do |format|
       if @batch.save
@@ -66,6 +69,10 @@ class BatchesController < ApplicationController
 
     def set_courses
       @courses = Course.all
+    end
+
+    def authorize_user
+      authorize @batch
     end
 
     # Only allow a list of trusted parameters through.
