@@ -1,6 +1,5 @@
 class EnrollmentPolicy < ApplicationPolicy
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
     def resolve
       if user.is_a?(Student)
         Enrollment.where(student_id: user.id)
