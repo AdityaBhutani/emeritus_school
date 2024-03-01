@@ -5,6 +5,10 @@ class Student < User
   has_many :batches, through: :enrollments
 
   def classmates
-    Student.joins(:enrollments).where(enrollments: { batch_id: batches.pluck(:id) }).where.not(id: id).distinct
+    Student.joins(:enrollments)
+           .where(enrollments: { batch_id: batches.pluck(:id) })
+           .where
+           .not(id: id)
+           .distinct
   end
 end
