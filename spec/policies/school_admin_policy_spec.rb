@@ -38,7 +38,7 @@ RSpec.describe SchoolAdminPolicy do
   end
 
   context 'when the user is not an Admin' do
-    let(:user) { nil } # Example where user is not set
+    let(:user) { create(:student) }
 
     it 'denies access to all actions' do
       expect(subject.index?).to be_falsey
