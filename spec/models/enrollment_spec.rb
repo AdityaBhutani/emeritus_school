@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe StudentBatch, type: :model do
+RSpec.describe Enrollment, type: :model do
   context 'validations' do
     it { should validate_presence_of(:student_id) }
     it { should validate_presence_of(:batch_id) }
