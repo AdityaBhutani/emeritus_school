@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe BatchPolicy do
   subject { described_class.new(user, batch) }
 
-  let(:batch) { create(:batch) } 
+  let(:batch) { create(:batch) }
 
   context 'when the user is an Admin' do
-    let(:user) { create(:admin) } 
+    let(:user) { create(:admin) }
 
     it 'allows access to index' do
       expect(subject.index?).to eq(true)
@@ -38,7 +40,7 @@ RSpec.describe BatchPolicy do
   end
 
   context 'when the user is a SchoolAdmin' do
-    let(:user) { create(:school_admin) } 
+    let(:user) { create(:school_admin) }
 
     it 'allows access to index' do
       expect(subject.index?).to eq(true)
@@ -70,7 +72,7 @@ RSpec.describe BatchPolicy do
   end
 
   context 'when the user is neither an Admin nor a SchoolAdmin' do
-    let(:user) { create(:student) } 
+    let(:user) { create(:student) }
 
     it 'denies access to all actions' do
       expect(subject.index?).to eq(false)

@@ -17,7 +17,12 @@ class CoursesController < ApplicationController
   end
 
   # GET /courses/1 or /courses/1.json
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
 
   # GET /courses/new
   def new

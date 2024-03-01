@@ -11,6 +11,6 @@ RSpec.describe Batch, type: :model do
 
   context 'associations' do
     it { should belong_to(:course) }
-    it { should have_many(:student_batches).dependent(:destroy) }
+    it { should have_many(:enrollments).dependent(:destroy) }
   end
 end

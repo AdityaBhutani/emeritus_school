@@ -16,6 +16,10 @@ class SchoolsController < ApplicationController
 
   # GET /schools/1 or /schools/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /schools/new
