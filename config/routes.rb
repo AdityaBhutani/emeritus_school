@@ -5,7 +5,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :enrollments
-  resources :students
   resources :batches
   resources :courses
   resources :school_admins
