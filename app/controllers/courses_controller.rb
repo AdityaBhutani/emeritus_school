@@ -9,6 +9,11 @@ class CoursesController < ApplicationController
   def index
     @courses = Course.all
     authorize @courses
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /courses/1 or /courses/1.json

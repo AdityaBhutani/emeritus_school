@@ -7,6 +7,11 @@ class SchoolsController < ApplicationController
   def index
     @schools = School.all
     authorize @schools
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /schools/1 or /schools/1.json

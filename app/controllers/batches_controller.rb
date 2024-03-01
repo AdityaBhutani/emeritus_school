@@ -7,10 +7,19 @@ class BatchesController < ApplicationController
   def index
     @batches = Batch.all
     authorize @batches
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /batches/1 or /batches/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /batches/new

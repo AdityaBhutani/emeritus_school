@@ -6,10 +6,19 @@ class SchoolAdminsController < ApplicationController
   def index
     @school_admins = SchoolAdmin.all
     authorize @school_admins
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /school_admins/1 or /school_admins/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /school_admins/new

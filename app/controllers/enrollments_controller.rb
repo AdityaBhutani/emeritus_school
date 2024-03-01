@@ -7,10 +7,19 @@ class EnrollmentsController < ApplicationController
   def index
     @enrollments = policy_scope(Enrollment).all
     authorize @enrollments
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /enrollments/1 or /enrollments/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   # GET /enrollments/new
