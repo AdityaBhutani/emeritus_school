@@ -43,7 +43,12 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  # Include FactoryBot test helpers
   config.include FactoryBot::Syntax::Methods
+
+  # Include Devise test helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_paths = [
     Rails.root.join('spec/fixtures')
