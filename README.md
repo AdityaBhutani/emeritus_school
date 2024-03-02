@@ -1,10 +1,12 @@
 ### Flow of object creation
 
+```ruby
 SchoolAdmin --> School --> Course --> Batch --> Enrollment <-- Student
       |             |         |         |             |
       +-------------+         +---------+             |
                   |                                   |
                   +-----------------------------------+
+```
 
 ---
 
