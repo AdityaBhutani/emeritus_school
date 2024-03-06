@@ -3,5 +3,6 @@
 <%= link_to 'Courses', courses_path if policy(Course).index? %>
 <%= link_to 'Batches', batches_path if policy(Batch).index? %>
 <%= link_to 'Enrollments', enrollments_path if policy(Enrollment).index? %>
+<%= link_to 'Classmates', classmates_path if policy(:classmate).index? %>
 
 <%= button_to 'Sign Out', destroy_user_session_path, method: :delete %>

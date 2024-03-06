@@ -30,5 +30,11 @@ batch.save!
 student = Student.new(first_name: 'Student1', last_name: 'student1', email: 'stu@dent1', password: PASSWORD)
 student.save!
 
+student2 = Student.new(first_name: "Student2", last_name: "student2", email: "stu@dent2", password: "asdqwezxc")
+student2.save!
+
 enrollment = Enrollment.new(student: student, batch: batch)
 enrollment.save!
+
+enrollment2 = Enrollment.new(student: student2, batch: batch)
+enrollment2.save!
