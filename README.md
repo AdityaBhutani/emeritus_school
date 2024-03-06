@@ -41,10 +41,10 @@ SchoolAdmin --> School --> Course --> Batch --> Enrollment <-- Student
 | GET       | `/courses`              | List all courses within their schools     | Admin, SchoolAdmin              |
 | PUT       | `/courses/:id`          | Update a course's information             | Admin, SchoolAdmin              |
 | DELETE    | `/courses/:id`          | Delete a course                           | Admin, SchoolAdmin              |
-| POST      | `/batches`              | Create a new batch for a course           | Admin                           |
-| GET       | `/batches`              | List all batches within their courses     | Admin                           |
-| PUT       | `/batches/:id`          | Update a batch's information              | Admin                           |
-| DELETE    | `/batches/:id`          | Delete a batch                            | Admin                           |
+| POST      | `/batches`              | Create a new batch for a course           | Admin, SchoolAdmin              |
+| GET       | `/batches`              | List all batches within their courses     | Admin, SchoolAdmin              |
+| PUT       | `/batches/:id`          | Update a batch's information              | Admin, SchoolAdmin              |
+| DELETE    | `/batches/:id`          | Delete a batch                            | Admin, SchoolAdmin              |
 | POST      | `/enrollments`          | Approve or deny an enrollment request     | Admin, Partially by Student     |
 | GET       | `/enrollments`          | List all enrollment requests by student   | Admin for all, Student for self |
 | PUT       | `/enrollments/:id`      | Update an enrollment request status       | Admin                           |
