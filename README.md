@@ -1,3 +1,28 @@
+Application Requirements:
+Create an application that allows for the creation and management of schools, courses, batches, and students by various user types including Admin, School Admin, and Student. With different user types and their respective capabilities, the application offers a flexible and secure platform for educational organisations.
+
+= User Types and Responsibilities:
+  Admin:
+    - Admins have full control over the system and can create schools and SchoolAdmins.
+  SchoolAdmin:
+    - SchoolAdmins can update information about the school
+    - SchoolAdmins are responsible for creating courses
+    - SchoolAdmins are responsible for creating batches
+    - SchoolAdmins are responsible for adding students to batches
+    - They can also approve or deny enrolment requests made by students
+  Student:
+    - Students can raise a request to enrol in a batch.
+    - Students from the same batch can see their classmates and their progress
+
+= The application must also be available as an API -- Good to Have
+
+Expectations:
+It is mandatory to implement all the listed features.
+Detailed test cases covering majority of scenarios must be developed.
+A comprehensive README must be included in the code, which can be used for verification purposes.
+The code should be submitted either as a compressed zip file or a shared link to the repository.
+The deadline for completion is 4 days.
+
 ### Flow of object creation
 
 ```ruby
